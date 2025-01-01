@@ -131,15 +131,20 @@ function Pattern9(n) {
 
 function Pattern10(n) {
     for (i = 0; i < 2 * n; i++) { 
-        let totalCol = i < n ? i : 2 * n - i;
+        let totalCol = i < n ? i : 2 * n - i; 
 
-        for (let k = 0; k < n - totalCol; k++) {
+        for (j = 0; j < n - totalCol; j++) {
             str += ' ';
         }
 
-        for (let l = 0; l < 2 * totalCol - 1; l++) {
+        for (k = 0; k < 2 * totalCol - 1; k++) {
             str += '*';
         }
+
+        for (l = 0; l < n - totalCol; l++) {
+            str += ' ';
+        }
+ 
         str += '\n';
     }
   return str;
