@@ -1,23 +1,27 @@
-/** @format */
-
-let s = '()[]{}';
+let s = '(){[]}';
 
 function validParentheses(s) {
   let stack = [];
-  let map = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-  };
 
   for (let i = 0; i < s.length; i++) {
-    if (map[s[i]]) {
-      stack.push(map[s[i]]);
+    if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
+      stack.push(s[i]);
     } else {
-      if (s[i] !== stack.pop()) {
+      if (stack.length === 0) {
+        return false;
+      }
+
+      let last = stack[stack.length - 1];
+
+      if ((s[i] === ')' && last === '(') || (s[i] === ']' && last === '[') || (s[i] === '}' && last === '{')) {
+        stack.pop();
+      } else {
         return false;
       }
     }
   }
+
   return stack.length === 0;
 }
+
+console.log(validParentheses(s));
