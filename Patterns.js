@@ -152,8 +152,8 @@ const Pattern11 = (n) => {
 };
 
 const Pattern12 = (n) => {
-  for (let i = 0; i <= n; i++) { 
-    for (j = 0; j <= i; j++){
+  for (let i = 0; i <= n; i++) {
+    for (j = 0; j <= i; j++) {
       str += j % 2 === 0 ? 1 : 0;
     }
     str += '\n';
@@ -162,23 +162,23 @@ const Pattern12 = (n) => {
 };
 
 const Pattern13 = (n) => {
-  for (let i = 1; i <= n; i++) { 
-    for (j = 1; j <= i; j++){
+  for (let i = 1; i <= n; i++) {
+    for (j = 1; j <= i; j++) {
       str += j;
     }
 
-    for (let k = 0; k <= 2*(n - i); k++) { 
+    for (let k = 0; k <= 2 * (n - i); k++) {
       str += '*';
     }
 
-    for (let l = i; l >= 1; l--) { 
+    for (let l = i; l >= 1; l--) {
       str += l;
     }
 
     str += '\n';
   }
   return str;
-}
+};
 
 const Pattern14 = (n) => {
   for (let i = 1; i <= n; i++) {
@@ -191,5 +191,28 @@ const Pattern14 = (n) => {
   }
 
   return str;
-}
-console.log(Pattern14(5));
+};
+
+const Pattern15 = (n) => {
+  for (let i = 0; i < 2 * n; i++) {
+    let noOfCol = i < n ? i : 2 * n - i;
+
+    for (let j = 0; j < noOfCol; j++) {
+      str += '*';
+    }
+
+    for (let k = 2 * n; k > 2 * noOfCol; k--) {
+      str += ' ';
+    }
+
+    for (let l = 0; l < noOfCol; l++) {
+      str += '*';
+    }
+
+    str += '\n';
+  }
+
+  return str;
+};
+
+console.log(Pattern15(5));
