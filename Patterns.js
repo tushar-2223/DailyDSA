@@ -215,4 +215,34 @@ const Pattern15 = (n) => {
   return str;
 };
 
-console.log(Pattern15(5));
+const Pattern16 = (n) => { 
+  for (let i = 1; i <= n; i++){
+    for (let j = 1; j <= n; j++){
+      if (i === 1 || i === n || j === 1 || j === n){
+        str += '*';
+      } else {
+        str += ' ';
+      }
+    }
+    str += '\n';
+  }
+
+return str;
+};
+
+const Pattern17 = (n) => { 
+  for (let i = 1; i <= n; i++){
+    for (let j = 1; j <= n; j++){
+      if (i === 1 || i === n || j === 1 || j === n || i === j || i + j === n + 1){
+        str += '*';
+      } else {
+        str += ' ';
+      }
+    }
+    str += '\n';
+  }
+
+  return str;
+}
+
+console.log(Pattern17(5));
