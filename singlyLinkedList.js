@@ -5,6 +5,8 @@ class Node {
       this.data = data1;
       this.next = next1;
   }
+
+  
 }
 // Function to print the linked list
 function printLinkedList(head) {
