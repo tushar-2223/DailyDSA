@@ -77,7 +77,6 @@ String Pattern5(int n) {
 
 String Pattern6(int n) {
   String str = '';
-  String str2 = '';
 
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= i; j++) {
@@ -88,9 +87,7 @@ String Pattern6(int n) {
 
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n - i; j++) {
-      str2 += j.toString();
     }
-    str2 += '\n';
   }
 
   return str;
