@@ -245,4 +245,4 @@ const Pattern17 = (n) => {
   return str;
 }
 
-console.log(Pattern17(5));
+console.log(Pattern15(10));
