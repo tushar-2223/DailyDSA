@@ -56,7 +56,7 @@ String Pattern4(int n) {
 
 String Pattern5(int n) {
   String str = '';
-  String str2 = '';
+  // String str2 = '';
 
   for (int i = 1; i <= n; i++) {
     for (int j = i; j <= n; j++) {
@@ -67,9 +67,9 @@ String Pattern5(int n) {
 
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n - i; j++) {
-      str2 += '*';
+      // str2 += '*';
     }
-    str2 += '\n';
+    // str2 += '\n';
   }
 
   return str;
@@ -86,8 +86,7 @@ String Pattern6(int n) {
   }
 
   for (int i = 1; i <= n; i++) {
-    for (int j = 1; j <= n - i; j++) {
-    }
+    for (int j = 1; j <= n - i; j++) {}
   }
 
   return str;
