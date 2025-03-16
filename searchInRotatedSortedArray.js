@@ -1,4 +1,3 @@
-
 function search(nums, target) {
     let low = 0, high = nums.length - 1;
     while (low <= high) {
@@ -26,4 +25,3 @@ function search(nums, target) {
 let arr = [7, 8, 9, 1, 2, 3, 4, 5, 6];
 let target = 1;
 let ans = search(arr, target);
-
