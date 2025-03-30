@@ -1,35 +1,38 @@
 const majorityElement = (nums) => {
-    let elementStack = [];
+  let elementStack = [];
 
-    for (let i = 0; i < nums.length; i++) {
-        if(elementStack.length === 0 || elementStack[elementStack.length - 1] === nums[i]) {
-            elementStack.push(nums[i]);
-        } else {
-            elementStack.pop();
-        }
+  for (let i = 0; i < nums.length; i++) {
+    if (
+      elementStack.length === 0 ||
+      elementStack[elementStack.length - 1] === nums[i]
+    ) {
+      elementStack.push(nums[i]);
+    } else {
+      elementStack.pop();
     }
+  }
 
-    return elementStack[0];
+  return elementStack[0];
 };
 
 //solution 2
 const majorityElement2 = (nums) => {
-    let map = {};
-    let majority = nums.length / 2;
+  let map = {};
+  let majority = nums.length / 2;
 
-    for (let i = 0; i < nums.length; i++) {
-        if (map[nums[i]]) {
-            map[nums[i]]++;
-        } else {
-            map[nums[i]] = 1;
-        }
-
-        if (map[nums[i]] > majority) {
-            return nums[i];
-        }
+  for (let i = 0; i < nums.length; i++) {
+    if (map[nums[i]]) {
+      map[nums[i]]++;
+    } else {
+      map[nums[i]] = 1;
     }
 
-    return -1;
+    if (map[nums[i]] > majority) {
+      return nums[i];
+    }
+  }
+
+  return -1;
 };
 
-console.log(majorityElement2([3, 2, 3]));
+console.log(majorityElement2([3, 2, 3, 3, 2, 2, 2, 3]));
