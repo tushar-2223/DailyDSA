@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Checkboxes</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <label><input type="checkbox" id="chk1"> Parent 1</label>
+            <ul>
+                <li>
+                    <label><input type="checkbox" id="chk2"> Parent 2</label>
+                    <ul>
+                        <li><label><input type="checkbox" id="chk3"> Child 1</label></li>
+                        <li><label><input type="checkbox" id="chk4"> Child 2</label></li>
+                        <li>
+                            <label><input type="checkbox" id="chk5"> Child 3</label>
+                            <ul>
+                                <li><label><input type="checkbox" id="chk6"> Child 4</label></li>
+                                <li><label><input type="checkbox" id="chk7"> Child 5</label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><label><input type="checkbox" id="chk8"> Parent 3</label></li>
+                <li><label><input type="checkbox" id="chk9"> Parent 4</label></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", function () {
+                updateChildren(this);
+                updateParents(this);
+            });
+        });
+
+        function updateChildren(parentCheckbox) {
+            const childList = parentCheckbox.closest("li").querySelector("ul");
+            if (childList) {
+                const childCheckboxes = childList.querySelectorAll("input[type='checkbox']");
+                childCheckboxes.forEach(childCheckbox => {
+                    childCheckbox.checked = parentCheckbox.checked;
+                });
+            }
+        }
+
+        function updateParents(childCheckbox) {
+            let parentUl = childCheckbox.closest("ul").parentElement.closest("ul");
+            while (parentUl) {
+                const parentLi = parentUl.parentElement;
+                const parentCheckbox = parentLi.querySelector("input[type='checkbox']");
+                if (parentCheckbox) {
+                    const siblingCheckboxes = parentUl.querySelectorAll("input[type='checkbox']");
+                    const allChecked = Array.from(siblingCheckboxes).every(cb => cb.checked);
+                    const someChecked = Array.from(siblingCheckboxes).some(cb => cb.checked);
+
+                    parentCheckbox.checked = allChecked;
+                    parentCheckbox.indeterminate = !allChecked && someChecked;
+                }
+                parentUl = parentLi.closest("ul").parentElement.closest("ul");
+            }
+        }
+    });
+</script>
+
+
+</html>

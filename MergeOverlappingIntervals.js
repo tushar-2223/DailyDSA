@@ -1,6 +1,8 @@
 const merge = (intervals) => {
     if (intervals.length === 0) return [];
     
+    intervals.sort((a, b) => a[0] - b[0]);
+
     var result = [];
     var current = intervals[0];
     for (var i = 1; i < intervals.length; i++) {
@@ -15,5 +17,4 @@ const merge = (intervals) => {
     return result;
 };
 
-
-console.log(merge([[1,3],[2,6],[8,10],[15,18]]));
+console.log(merge([[1, 3], [2, 6], [8, 10], [15, 18]]));
